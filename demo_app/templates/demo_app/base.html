@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>{% block title%}Demo_app ローン審査{% endblock %}</title>
+  </head>
+
+  <body>
+    <div class="col s12 card-panel teal leghten-2">
+      <div class="row">
+        <span class="white-text col s6" style="font-size: 20px;">
+          <a href="/" style="color:white">
+            ローン審査アプリ
+          </a>
+        </span>
+      </div>
+    </div>
+
+    <div class="contents" style = "margin:0 20px">
+      {% block content%}
+
+      {% endblock %}
+    </div>
+
+  </body>
+</html>

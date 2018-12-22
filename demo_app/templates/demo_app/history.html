@@ -1,0 +1,34 @@
+{% extends 'demo_app/base.html' %}
+
+{% block content %}
+
+<h1>履歴一覧</h1>
+
+
+<div class="row">
+  <div class="col s11">
+    <table>
+      <tbody>
+      {% for customer in customers %}
+        <tr>
+          <td>{{customer.id}}</td>
+          <td>{{customer.registered_date}}</td>
+          <td>{{customer.last_name}}{{customer.first_name}}</td>
+          <td>{% if customer.sex == 1%}男性{% else %}女性{% endif %}</td>
+          <td>{{customer.age}}</td>
+          <td>{{customer.education}}</td>
+          <td>{{customer.limit_balance}}</td>
+          <td>{% if customer.result == 0 %}Fail{% elif customer.result == 1%}Clear{%  else %}None{% endif %}</td>
+          <td>{{customer.proba|floatformat:2}}</td>
+          <td>{{customer.comment}}</td>
+          <td><form class="delete" method="post">{% csrf_token %}
+            <button type="submit" name="d_id" value={{customer.id}}>削除</button></form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock%}

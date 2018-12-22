@@ -1,0 +1,29 @@
+{% extends 'demo_app/base.html' %}
+
+{% block content %}
+
+<h1>審査結果</h1>
+
+<div class="row">
+  <div class="col s7">
+    <table>
+      <tbody>
+        <tr>
+          <td style="font-size:30px; margin:0">結果は{% if y == 0 %}審査に落ちました。{% else %}審査通過です。{% endif %}</td>
+        </tr>
+        <tr>
+          <td style="font-size:30px; margin:0">信頼度は{{y_proba}}％です。</td>
+        </tr>
+        <tr>
+          <td style="font-size:20px; margin:0">{{comment}}。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col s3" style="margin: 10% 30px">
+    <a href="/history"><button type="button" name="history" style="padding: 10px 20px">顧客リストを確認する。</button></a>
+  </div>
+</div>
+
+{% endblock %}

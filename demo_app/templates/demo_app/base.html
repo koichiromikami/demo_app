@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <!-- Compiled and minified CSS -->
+    <!-- materialize CSSのCDN経由での読み込み -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <title>{% block title%}Demo_app ローン審査{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <meta charset="utf-8">
+    <title>{% block title %}Demo App_ローン審査{% endblock %}</title>
   </head>
-
   <body>
-    <div class="col s12 card-panel teal leghten-2">
+    <div class="col s12 card-panel teal lighten-2 ">
       <div class="row">
-        <span class="white-text col s6" style="font-size: 20px;">
-          <a href="/" style="color:white">
-            ローン審査アプリ
+        <span class="white-text col s6" style="font-size:20px"><a href="/" style="color:white">ローン審査アプリ</a></span>
+
+<!-- ログアウト機能の追加 -->
+      {% if user.is_authenticated %}
+        <span class="col s6" style="font-size:20px; text-align: right;">
+          <a href="{% url 'logout' %}" style="color:white; text-decoration: underline;">
+          こんにちは、{{ user.username}}
           </a>
         </span>
+      {% endif %}
       </div>
     </div>
 
-    <div class="contents" style = "margin:0 20px">
-      {% block content%}
+    <div class="contents" style="margin:0 20px">
+      {% block content %}
 
       {% endblock %}
+
     </div>
 
+    {% block script %}
+
+    {% endblock %}
   </body>
 </html>

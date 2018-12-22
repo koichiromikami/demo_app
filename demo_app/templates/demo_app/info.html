@@ -1,0 +1,125 @@
+{% extends 'demo_app/base.html' %}
+
+{% block content %}
+
+<h1>顧客デモグラフィック</h1>
+
+<div class="row">
+  <div class="col s6">
+    <canvas id="sex" style="height: 50px;"></canvas>
+    </div>
+    <div class="col s6">
+    <canvas id="edu" style="height: 50px;"></canvas>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col s6">
+    <canvas id="mari" style="height: 50px;"></canvas>
+    </div>
+    <div class="col s6">
+    <canvas id="age" style="height: 50px;"></canvas>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col s6">
+    <canvas id="result" style="height: 50px;"></canvas>
+    </div>
+    <div class="col s6">
+    <canvas id="proba" style="height: 50px;"></canvas>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" charset="shif-jis">
+var index = {{ index|safe }};
+var val = {{ val|safe }};
+
+data_sex = {
+  labels: index.sex,
+  datasets: [{
+    label: 'sex',
+    data: val.sex,
+    backgroundColor: ['rgba(66, 212, 244, 0.2)', 'rgba(255, 99, 132, 0.2)',]
+  }]
+};
+
+data_education = {
+  labels: index.education,
+  datasets: [{
+    data: val.education,
+    backgroundColor: ['rgba(66, 212, 244, 0.2)', 'rgba(255, 99, 132, 0.2)','rgba(244, 241, 65, 0.2)', 'rgba(244, 178, 65, 0.2)']
+  }]
+};
+
+data_marriage = {
+  labels: index.marriage,
+  datasets: [{
+    data: val.marriage,
+    backgroundColor: ['rgba(66, 212, 244, 0.2)', 'rgba(255, 99, 132, 0.2)','rgba(244, 241, 65, 0.2)', 'rgba(244, 178, 65, 0.2)']
+  }]
+};
+data_age = {
+  labels: index.age,
+  datasets: [{
+    label: 'age',
+    data: val.age,
+    backgroundColor: ['rgba(66, 212, 244, 0.2)', 'rgba(255, 99, 132, 0.2)','rgba(244, 241, 65, 0.2)', 'rgba(244, 178, 65, 0.2)']
+  }]
+};
+data_result = {
+  labels: index.result,
+  datasets: [{
+    data: val.result,
+    backgroundColor: ['rgba(66, 212, 244, 0.2)', 'rgba(255, 99, 132, 0.2)','rgba(244, 241, 65, 0.2)', 'rgba(244, 178, 65, 0.2)']
+  }]
+};
+data_proba = {
+  labels: index.proba,
+  datasets: [{
+    data: val.proba,
+    backgroundColor: ['rgba(66, 212, 244, 0.2)', 'rgba(255, 99, 132, 0.2)','rgba(244, 241, 65, 0.2)', 'rgba(244, 178, 65, 0.2)']
+  }]
+};
+
+
+var myPieChart = new Chart(sex,{
+    type: 'bar',
+    data: data_sex,
+    options: {
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero:true
+              }
+            }]
+          }
+        }
+      });
+var myPieChart = new Chart(edu,{
+    type: 'pie',
+    data: data_education,
+});
+var myPieChart = new Chart(mari,{
+    type: 'pie',
+    data: data_marriage,
+});
+var myPieChart = new Chart(age,{
+    type: 'bar',
+    data: data_age,
+});
+var myPieChart = new Chart(result,{
+    type: 'pie',
+    data: data_result,
+});
+var myPieChart = new Chart(proba,{
+    type: 'pie',
+    data: data_proba,
+});
+
+</script>
+{% endblock %}

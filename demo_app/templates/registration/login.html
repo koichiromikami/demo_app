@@ -1,0 +1,29 @@
+{% extends "demo_app/base.html" %}
+
+{% block content %}
+  {% if form.errors %}
+    <p>ログイン認証に失敗しました。</p>
+  {% endif %}
+
+<div class="row">
+  <div class="col s4" style="margin-left:30%;">
+
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password.label_tag }}</td>
+          <td>{{ form.password }}</td>
+        </tr>
+      </table>
+
+      <button type="submit" value="login" class="btn btn-default" style="margin:15px 5px 0">login</button>
+      <input type="hidden" name="next" value="{{ next }}">
+    </form>
+  </div>
+</div>
+{% endblock %}

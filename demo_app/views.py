@@ -6,7 +6,7 @@ import numpy as np
 
 # 必ずここにおく
 # loaded_model = joblib.load("demo_app/demo_model.pkl")
-loaded_model = joblib.load(/home/koichiromikami/koichiromikami.pythonanywhere.com/)
+loaded_model = joblib.load("/home/koichiromikami/koichiromikami.pythonanywhere.com/demo_app/demo_model.pkl")
 
 def index(request):
     return render(request, "demo_app/index.html", {})
